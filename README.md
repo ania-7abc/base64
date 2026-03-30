@@ -27,7 +27,7 @@ include(FetchContent)
 FetchContent_Declare(
     base64
     GIT_REPOSITORY https://github.com/ania-7abc/base64.git
-    GIT_TAG v1.0.2
+    GIT_TAG v1.0.3
 )
 
 # Optionally, control whether to build shared libraries (default OFF)
@@ -36,10 +36,10 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries" FORCE)
 FetchContent_MakeAvailable(base64)
 
 # Link against the library
-target_link_libraries(your_target PRIVATE ania-7abc::base64)
+target_link_libraries(your_target PRIVATE base64)
 ```
 
-The library exports the target `ania-7abc::base64`. Dependencies on libsodium are handled automatically.
+The library exports the target `base64`. Dependencies on libsodium are handled automatically.
 
 ## Usage
 
