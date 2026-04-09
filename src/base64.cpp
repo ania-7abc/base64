@@ -1,12 +1,12 @@
 // base64.cpp
-
 #include <base64/base64.hpp>
-
+#include <sodium.h>
 #include <stdexcept>
 
-#include <sodium.h>
+namespace Base64
+{
 
-auto Base64::encode(const std::vector<uint8_t> &data) -> std::string
+auto encode(const std::vector<uint8_t> &data) -> std::string
 {
     size_t encoded_len = sodium_base64_encoded_len(data.size(), sodium_base64_VARIANT_ORIGINAL);
 
@@ -25,12 +25,12 @@ auto Base64::encode(const std::vector<uint8_t> &data) -> std::string
     base64.resize(base64.length());
     return base64;
 }
-auto Base64::encode(const std::string &text) -> std::string
+auto encode(const std::string &text) -> std::string
 {
     return encode(std::vector<uint8_t>(text.begin(), text.end()));
 }
 
-auto Base64::decode(const std::string &base64) -> std::vector<uint8_t>
+auto decode(const std::string &base64) -> std::vector<uint8_t>
 {
     std::vector<uint8_t> data;
     data.resize(base64.length());
@@ -51,8 +51,10 @@ auto Base64::decode(const std::string &base64) -> std::vector<uint8_t>
     data.resize(text_len);
     return data;
 }
-auto Base64::decode_to_string(const std::string &base64) -> std::string
+auto decode_to_string(const std::string &base64) -> std::string
 {
     auto data = decode(base64);
     return {data.begin(), data.end()};
 }
+
+} // namespace Base64
