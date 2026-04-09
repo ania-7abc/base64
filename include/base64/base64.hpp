@@ -8,9 +8,9 @@
 namespace Base64
 {
 
-static auto encode(const std::vector<uint8_t> &data) -> std::string;
-static auto encode(const std::string &text) -> std::string;
-static auto decode(const std::string &base64) -> std::vector<uint8_t>;
-static auto decode_to_string(const std::string &base64) -> std::string;
+auto encode(const std::vector<uint8_t> &data) -> std::string;
+auto encode(const std::string &text) -> std::string;
+auto decode(const std::string &base64) -> std::vector<uint8_t>;
+auto decode_to_string(const std::string &base64) -> std::string;
 
 }; // namespace Base64
